@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Label</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+        body {
+          font-family: "Open Sans", sans-serif;
+        }
+
+        .myNav {
+            width: 100%;
+            white-space: nowrap;
+        }
+
+        #img {
+            height: 100%;
+        }
+
+        #imgDiv {
+            text-align: center;
+            height: 90%;
+            position: relative;
+        }
+
+        .list-group-item {
+            float: none;
+            display: inline-block;
+        }
+
+        .legendColor {
+            height: 100%;
+            width: 50px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .legendText {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script defer>
+        var currentGuid = '';
+        var loadingSrc = "{{ url_for('static', filename='loading.gif') }}"
+
+        const validateImage = async(correct) => {
+            document.getElementById('img').src = loadingSrc;
+
+            let data = {
+                'guid': currentGuid,
+                'correct': correct
+            }
+
+            let r = await fetch('/validateImage', {
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+
+            let json = await r.json()
+            if (json.success) {
+                fetchImage()
+            }
+        }
+
+        const fetchImage = async () => {
+            let r = await fetch('/getImage', {
+                method: 'GET'
+            })
+
+            let json = await r.json()
+            
+            if (!json.success) {
+                document.getElementById('detectorName').innerHTML = 'No Images Available';
+                return;
+            }
+
+            currentGuid = json.guid;
+            colors = json.colors;
+
+            let legendString = ''
+            for (var key in colors) {
+                console.log(key, colors[key]);
+                legendString += 
+                    `<div class="col-sm">
+                        <div class="legendColor" style="background-color: rgb${colors[key]}"></div><span class="legendText">${key}</span>
+                    </div>`
+            }
+
+            document.getElementById('legendDiv').innerHTML = legendString;
+            document.getElementById('detectorName').innerHTML = json.detectorName;
+            document.getElementById('img').src = 'data:image/png;base64,' + json.imageBytes;
+        }
+
+        function logout() {
+            document.cookie = "token=''";
+            window.location.href = '/login';
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="myNav">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">{{ username }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="logout()">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+
+    <div class="container mt-2">
+        <div class="mt-5" style="text-align: center;">
+            <h3 id="detectorName"></h3>
+        </div>
+
+        <div class="row mt-5" style="text-align: center;" id="legendDiv">
+            
+        </div>
+
+        <div class="mt-4" style="" id="imgDiv">
+            <img id="img" class="img-fluid" alt="" />
+        </div>
+
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-sm">
+                    <button type="button" class="btn btn-success btn-lg btn-block" onclick="validateImage(true);">Correct</button>
+                </div>
+                <div class="col-sm">
+                    <button type="button" class="btn btn-danger btn-lg btn-block" onclick="validateImage(false);">Incorrect</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('img').src = loadingSrc;
+        fetchImage();
+    </script>
+</body>
+</html>

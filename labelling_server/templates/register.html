@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        html,
+        body {
+          width: 100%;
+          min-height: 100vh;
+          overflow-x: hidden;
+        }
+
+        body {
+          display: flex;
+          font-family: "Open Sans", sans-serif;
+        }
+
+        .image {
+          background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Singapore_National_Library-2009-06-12.jpg/1200px-Singapore_National_Library-2009-06-12.jpg)
+            rgba(255, 255, 255, 0.3);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-blend-mode: lighten;
+          flex: 1;
+        }
+
+        .sign-in {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          flex: 1;
+        }
+
+        h1 {
+          font-size: 3.5rem;
+          margin-bottom: 30px;
+        }
+
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+          padding: 10px;
+          font-size: 1.2rem;
+          border: none;
+          border-bottom: solid 1px #000;
+          outline: none;
+        }
+
+        input[type="email"]::placeholder,
+        input[type="password"]::placeholder {
+          letter-spacing: 2px;
+          transition: all 0.3s ease;
+        }
+
+        input[type="email"]:hover::placeholder,
+        input[type="password"]:hover::placeholder {
+          color: #000;
+        }
+
+        input[type="button"] {
+          background-color: #000;
+          color: #fff;
+          padding: 10px;
+          font-size: 1.3rem;
+          cursor: pointer;
+          border: none;
+          transition: all 0.3s ease;
+          border-radius: 15px;
+        }
+
+        input[type="button"]:hover {
+          background-color: #eee;
+          color: #000;
+        }
+
+        a {
+          color: #424242;
+          text-decoration: none;
+          align-self: flex-end;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+
+        ::selection {
+          color: #fff;
+          background-color: #000;
+        }
+
+        @media screen and (max-width: 786px) {
+          .image {
+            display: none;
+          }
+        }
+    </style>
+    <script>
+        const register = async () => {
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+            let retyped_password = document.getElementById('retyped-password').value
+
+            if (username.length == 0 && password.length == 0) {
+                return alert ('Username and password must not be empty')
+            }
+
+            if (password.length == 0) {
+                return alert ('Password must not be empty')
+            }
+
+            else if (username.length == 0) {
+                return alert ('Username must not be empty')
+            }
+
+            else if (password != retyped_password) {
+                return alert('Passwords do not match')
+            }
+
+
+            let data = {
+                'username': document.getElementById('username').value,
+                'password': password
+            }
+
+            let r = await fetch('/register', {
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+
+            let json = await r.json()
+            if (json.success) {
+                window.location.href = '/';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="image"></div>
+    <div class="sign-in">
+      <h1>Register</h1>
+
+      <form action="/register" method="post">
+        <input id="username" type="email" placeholder="Username" name="username" />
+        <input id="password" type="password" placeholder="Password" name="password" />
+        <input id="retyped-password" type="password" placeholder="Retype password" />
+        <br>
+        <input type="button" value="Register" onclick="register()" />
+      </form>
+
+    </div>
+</body>
+</html>
