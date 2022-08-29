@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/from_text"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="10dp"
+            android:ems="10"
+            android:hint="From"
+            android:layout_weight="0.7"/>
+        <Button
+            android:id="@+id/current_button"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:text="Current"
+            android:textSize="18sp"
+            android:background="@drawable/primary"
+            android:textColor="@color/white"
+            android:layout_weight="0.3"
+            android:visibility="visible"/>
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/loading_imageView"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.3"
+            android:visibility="gone"
+            android:src="@drawable/loading"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/to_text"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginHorizontal="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="To" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp">
+        <Button
+            android:id="@+id/directions_button"
+            android:layout_width="match_parent"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:background="@drawable/success"
+            android:layout_height="50dp"
+            android:text="Get Directions"
+            android:enabled="false"
+            android:alpha="0.5"
+            android:focusable="true"
+            android:clickable="true"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:paddingTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ListView
+            android:id="@+id/search_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+</LinearLayout>

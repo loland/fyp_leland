@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/FYP/MyMap/app/src/main/res/layout/activity_about.xml" value="0.375" />
+        <entry key="..\:/FYP/MyMap/app/src/main/res/layout/activity_home.xml" value="0.3875" />
+        <entry key="..\:/FYP/MyMap/app/src/main/res/layout/activity_home_ui.xml" value="0.1890625" />
+        <entry key="..\:/FYP/MyMap/app/src/main/res/layout/activity_label.xml" value="0.335" />
+        <entry key="..\:/FYP/MyMap/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/FYP/MyMap/app/src/main/res/layout/activity_main.xml" value="0.165" />
+        <entry key="..\:/FYP/MyMap/app/src/main/res/layout/activity_route_options.xml" value="0.165" />
+        <entry key="..\:/FYP/MyMap/app/src/main/res/layout/activity_routing.xml" value="0.165" />
+        <entry key="..\:/FYP/MyMap/app/src/main/res/layout/activity_routing2.xml" value="0.3875" />
+        <entry key="..\:/FYP/MyMap/app/src/main/res/layout/activity_routing_list_view.xml" value="0.3875" />
+        <entry key="..\:/FYP/MyMap/app/src/main/res/layout/activity_routing_settings.xml" value="0.375" />
+        <entry key="..\:/FYP/MyMap/app/src/main/res/layout/activity_routing_ui.xml" value="0.335" />
+        <entry key="..\:/FYP/MyMap/app/src/main/res/layout/end_itinerary.xml" value="0.3875" />
+        <entry key="..\:/FYP/MyMap/app/src/main/res/layout/main_activity.xml" value="0.3875" />
+        <entry key="..\:/FYP/MyMap/app/src/main/res/layout/search_listview.xml" value="0.3875" />
+        <entry key="..\:/FYP/MyMap/app/src/main/res/layout/tfe_od_activity_camera.xml" value="0.2609375" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

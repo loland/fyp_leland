@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="15dp"
+    android:layout_width="350dp"
+    android:layout_height="200dp"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/info">
+
+    <TextView
+        android:id="@+id/closeSettings"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="X"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_gravity="right"
+        tools:ignore="RtlHardcoded"
+        android:clickable="true"
+        android:focusable="true"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="END THIS TRIP?"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="30sp">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="bottom">
+        <Button
+            android:id="@+id/yes_button"
+            android:layout_gravity="bottom"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/success"
+            android:text="YES"
+            android:textColor="@color/white"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="25sp">
+
+        </Button>
+        <Button
+            android:id="@+id/no_button"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="70dp"
+            android:background="@drawable/danger"
+            android:text="NO"
+            android:textSize="25sp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/white">
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>

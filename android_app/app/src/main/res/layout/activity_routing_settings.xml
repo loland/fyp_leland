@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="15dp"
+    android:layout_width="350dp"
+    android:layout_height="475dp"
+    android:layout_gravity="center"
+    tools:context=".RoutingSettingsActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/closeSettings"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:textColor="@color/black"
+        android:text="X"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_gravity="right"
+        tools:ignore="RtlHardcoded"
+        android:clickable="true"
+        android:focusable="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <Switch
+            android:id="@+id/audioSwitch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="130dp"
+            android:text="Audio Instructions"
+            android:layout_gravity="center"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <Switch
+            android:id="@+id/manualSwitch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="130dp"
+            android:text="Manual Controls"
+            android:layout_gravity="center"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <Switch
+            android:id="@+id/cameraSwitch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="130dp"
+            android:text="Auto Camera"
+            android:layout_gravity="center"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+    </LinearLayout>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Map Zoom"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center"/>
+        <SeekBar
+            android:id="@+id/zoomSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:max="7"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:text="Points Left: "
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/pointsLeftTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="10dp"
+            android:text="0"
+            android:gravity="center"/>
+        <ImageView
+            android:id="@+id/addPoint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_width="wrap_content"
+            android:padding="5dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_add"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+        <ImageView
+            android:id="@+id/removePoint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_width="wrap_content"
+            android:padding="5dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_remove"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:text="Map Update: "
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/mapUpdateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="10dp"
+            android:text="0"
+            android:gravity="center"/>
+        <ImageView
+            android:id="@+id/mapUpdateAddPoint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_width="wrap_content"
+            android:padding="5dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_add"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+        <ImageView
+            android:id="@+id/mapUpdateRemovePoint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_width="wrap_content"
+            android:padding="5dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_remove"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+</LinearLayout>
